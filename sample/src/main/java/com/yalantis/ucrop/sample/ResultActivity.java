@@ -211,7 +211,7 @@ public class ResultActivity extends BaseActivity {
                 .setTicker(getString(R.string.notification_image_saved))
                 .setSmallIcon(R.drawable.ic_done)
                 .setOngoing(false)
-                .setContentIntent(PendingIntent.getActivity(this, 0, intent, 0))
+                .setContentIntent(PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE))
                 .setAutoCancel(true);
         if (notificationManager != null) {
             notificationManager.notify(DOWNLOAD_NOTIFICATION_ID_DONE, notificationBuilder.build());
