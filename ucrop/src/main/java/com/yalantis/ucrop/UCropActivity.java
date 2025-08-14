@@ -129,6 +129,19 @@ public class UCropActivity extends AppCompatActivity {
 
         setupSystemBars(intent);
         setContentView(R.layout.ucrop_activity_photobox);
+        View ucropFrame = findViewById(R.id.ucrop_frame);
+        ViewCompat.setOnApplyWindowInsetsListener(ucropFrame, (v, insets) -> {
+            int statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top;
+            int navBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom;
+
+            v.setPadding(
+                v.getPaddingLeft(),
+                statusBarHeight,
+                v.getPaddingRight(),
+                navBarHeight
+            );
+            return insets;
+        });
         setupViews(intent);
         setImageData(intent);
         setInitialState();
